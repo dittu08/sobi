@@ -4,6 +4,7 @@ import AddItemModal from "./AddItemModal";
 import Item from "./Item";
 import { Provider } from "react-redux";
 import Store from "./Store";
+import { ModalOpenButton, StyledMain } from "./Styled";
 
 const Main = () => {
     const [showModal, setShowModal] = useState(false);
@@ -16,20 +17,11 @@ const Main = () => {
 
     return (
         <Provider store={Store}>
-            <div>
-                <div>
-                    <p>expense list</p>
-                    <button onClick={openModal}>+</button>
-                    {showModal && <AddItemModal closeModal={closeModal} />}
-                    <Item />
-                </div>
-                <div>
-                    <p>monthly graph</p>
-                </div>
-                <div>
-                    <p>circular graph</p>
-                </div>
-            </div>
+            <StyledMain>
+                <ModalOpenButton onClick={openModal}>&#43;</ModalOpenButton>
+                {showModal && <AddItemModal closeModal={closeModal} />}
+                <Item />
+            </StyledMain>
         </Provider>
     );
 };

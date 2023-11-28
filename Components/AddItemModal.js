@@ -3,6 +3,8 @@ import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { addItem } from "./Actions";
 import Select from "react-select";
+import { ModalCloseButton, ModalContainer, ModalName, ModalTop, ModalContent, ModalLine, ModalP, ModalInput, ModalButton } from "./Styled";
+import { FaXmark } from "react-icons/fa6";
 
 const AddItemModal = ({ closeModal }) => {
     const dispatch = useDispatch();
@@ -36,30 +38,32 @@ const AddItemModal = ({ closeModal }) => {
     const [selectCategory, setSelectCategory] = useState(category[0]);
 
     return (
-        <div className="modal-container">
-            <h2>내역 추가</h2>
-            <button onClick={closeModal}>x</button>
-            <div className="modal-content">
-                <div className="date">
-                    <p>날짜 : </p>
-                    <input type="date" value={date} onChange={(e) => setDate(e.target.value)} />
-                </div>
-                <div className="title">
-                    <p>제목 : </p>
-                    <input type="text" value={title} onChange={(e) => setTitle(e.target.value)} placeholder="제목을 입력해주세요" />
-                </div>
-                <div className="money">
-                    <p>금액 : </p>
+        <ModalContainer>
+            <ModalTop>
+                <ModalName>내역 추가</ModalName>
+                <ModalCloseButton onClick={closeModal}><FaXmark /></ModalCloseButton>
+            </ModalTop>
+            <ModalContent>
+                <ModalLine>
+                    <ModalP>날짜</ModalP>
+                    <ModalInput type="date" value={date} onChange={(e) => setDate(e.target.value)} />
+                </ModalLine>
+                <ModalLine className="title">
+                    <ModalP>제목</ModalP>
+                    <ModalInput type="text" value={title} onChange={(e) => setTitle(e.target.value)} placeholder="제목을 입력해주세요"/>
+                </ModalLine>
+                <ModalLine className="money">
+                    <ModalP>금액</ModalP>
                     <Select options={expend} defaultValue={selectExpend} onChange={setSelectExpend} />
-                    <input type="text" value={money} onChange={(e) => setMoney(e.target.value)} placeholder="금액을 입력해주세요" />
-                </div>
-                <div className="category">
-                    <p>카테고리 : </p>
+                    <ModalInput type="text" value={money} onChange={(e) => setMoney(e.target.value)} placeholder="금액을 입력해주세요" />
+                </ModalLine>
+                <ModalLine className="category">
+                    <ModalP>카테고리</ModalP>
                     <Select options={category} defaultValue={selectCategory} onChange={setSelectCategory} />
-                </div>
-                <button onClick={handleAddItem}>추가</button>
-            </div>
-        </div>
+                </ModalLine>
+                <ModalButton onClick={handleAddItem}>추가</ModalButton>
+            </ModalContent>
+        </ModalContainer>
     );
 };
 export default AddItemModal;
