@@ -1,0 +1,17 @@
+@font-face {
+  font-family: 'Jeju Myeongjo', serif;
+  src: url(./Fonts/JejuMyeongjo.ttf);
+}
+
+body {
+  margin: 0;
+  font-family: 'Jeju Myeongjo', serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  transform: skew(-0.05deg);
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
