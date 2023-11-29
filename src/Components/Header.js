@@ -1,6 +1,7 @@
 // Header.js
 import React, { useState } from "react";
 import AccountModal from "./AccountModal";
+import { AccountButton, AccountLi, AccountUl, StyledHeader, StyledLogo } from "./Styled";
 
 const Header = () => {
     const [loginModalOpen, setLoginModalOpen] = useState(false);
@@ -25,17 +26,17 @@ const Header = () => {
     };
 
     return (
-        <header>
-            <div className="logo">소비생활</div>
+        <StyledHeader>
+            <StyledLogo>소비생활</StyledLogo>
             <div>
-                <ul>
-                    <li><button onClick={openLoginModal}>로그인</button></li>
-                    <li><button onClick={openSignupModal}>회원가입</button></li>
-                </ul>
+                <AccountUl>
+                    <AccountLi><AccountButton onClick={openLoginModal}>로그인</AccountButton></AccountLi>
+                    <AccountLi><AccountButton onClick={openSignupModal}>회원가입</AccountButton></AccountLi>
+                </AccountUl>
             </div>
             {loginModalOpen && <AccountModal closeModal={closeLoginModal} modalType='login' openSignupModal={openSignupModal} />}
             {signupModalOpen && <AccountModal closeModal={closeSignupModal} modalType='signup' openLoginModal={openLoginModal} />}
-        </header>
+        </StyledHeader>
     )
 }
 
